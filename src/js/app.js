@@ -5,7 +5,7 @@ let letter = document.getElementById("letter");
 let capital = document.getElementById("capital");
 let number = document.getElementById("number");
 let length = document.getElementById("length");
-content();
+
 // Когда пользователь нажимает на поле Пароль, отображается окно сообщения
 myInput.onfocus = function() {
   document.getElementById("message").style.display = "block";
