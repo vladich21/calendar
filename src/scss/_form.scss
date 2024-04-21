@@ -52,6 +52,7 @@
   
   .input-box {
     margin-bottom: 49px;
+    position: relative;
     &:last-of-type {
       margin-bottom: 0;
     }
@@ -63,6 +64,16 @@
       line-height: 20px;
       color: #999999;
       user-select: none;
+    }
+    &-eye {
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+      position: absolute;
+      top: 30px;
+      right: 5px;
+      cursor: pointer;
+        
     }
     & > input {
       box-sizing: border-box;
@@ -132,4 +143,11 @@
         }
       }
     }
+  }
+
+  .valid {
+    color: grey;
+  }
+  .invalid {
+    color: red;
   }

@@ -1,86 +1,70 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const _pathToJs = './src/'
+const pages = [
+  ['sign-up', `${_pathToJs}sign-up.js`], 
+  ['sign-in', `${_pathToJs}sign-in.js`]
+]
 
-module.exports = {
-    context: path.resolve(__dirname, 'src'),
-    entry: '.app.js',
-    mode: 'development',
-    devtool: 'inline-source-map',
-    devServer: {
-        /** Будет запускать сервер на localhost:8080 в этой папке*/
-        contentBase: './dist',
-    },
-    watch: true,
+module.exports = (env, argv) => {
+  const mode = argv.mode || 'production'
+  const isDev = mode === 'development'
+  const devtool = isDev ? 'source-map' : 'nosources-source-map'
+  return {
+    mode,
+    devtool,
+    entry: Object.fromEntries(pages),
     output: {
-        filename: '.bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist'),
     },
-    output: {
-        filename: '[name].[contenthash].js', // динамичное и уникальное имя файла
-        path: path.resolve(__dirname, 'dist'),
-        clean: true, // для очистки папки dist при новом билде
+    optimization: {
+      splitChunks: {
+        chunks: "all",
+      },
+    },
+    resolve: {
+      extensions: ['.js'],
+    },  
+    module: {
+      rules: [
+        {
+          test: /\.html$/i,
+          use: 'html-loader',
+        },
+        {
+          test: /\.(sc|c)ss$/i,
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        },
+        {
+          test: /\.svg$/i,
+
+          use: 'url-loader',
+          resourceQuery: /url/,
+        },
+      ],
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            title: 'Наш заголовок страницы',
-        }),
+      ...pages.map((page, index) => new HtmlWebpackPlugin({
+        template: `./public/pages/${page[0]}.html`,
+        filename: !index ? 'index.html' : `${page[0]}.html`,
+        chunks: [page[0]]
+      })),
+      new MiniCssExtractPlugin()
     ],
-    module: {
-        rules: [
-            /** Babel **/
-            {
-                test: /\.m?js$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
-                    }
-                }
-                // npm install babel-loader @babel/core @babel/preset-env -D
-            },
-            /** CSS */
-            {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
-                // npm i style-loader css-loader -D
-            },
-            /** SCSS/SAAS */
-            {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    // Creates `style` nodes from JS strings
-                    "style-loader",
-                    // Translates CSS into CommonJS
-                    "css-loader",
-                    // Compiles Sass to CSS
-                    "sass-loader",
-                ],
-                // npm i style-loader css-loader sass sass-loader -D
-            },
-            /** Картинки */
-            {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
-            },
-            /** Шрифты */
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                type: 'asset/resource',
-            },
-            /** Файлы CSV */
-            {
-                test: /\.(csv|tsv)$/i,
-                use: ['csv-loader'],
-                // npm i csv-loader -D
-            },
-            /** Файлы XML */
-            {
-                test: /\.xml$/i,
-                use: ['xml-loader'],
-                // npm i xml-loader -D 
-            },
-        ],
+    devServer: {
+      port: 3000,
+      hot: true,
+      open: true,
+      historyApiFallback: true,
+      client: {
+        overlay: {
+          errors: true,
+          warnings: true,
+        },
+      },
     },
-};
+  }
+}
