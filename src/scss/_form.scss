@@ -93,6 +93,17 @@
       position: absolute;
       user-select: none;
     }
+<<<<<<< HEAD
+=======
+    .password__label {
+      position: relative;
+      .password__btn {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+      }
+    }
+>>>>>>> 632be2f40d7503b5f83e08a43dbc8cabbe9335e5
   }
   .btn-box {
     margin-top: 109px;
@@ -142,6 +153,7 @@
   }
   .invalid {
     color: red;
+<<<<<<< HEAD
   }
   .valid:before {
     position: relative;
@@ -156,3 +168,6 @@
     }
   
   // color: #000842;
+=======
+  }
+>>>>>>> 632be2f40d7503b5f83e08a43dbc8cabbe9335e5

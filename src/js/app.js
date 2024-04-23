@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // import '../scss/style.scss';
+=======
+import '../scss/style.scss';
+>>>>>>> 632be2f40d7503b5f83e08a43dbc8cabbe9335e5
 
 let myInput = document.getElementById("password");
 let letter = document.getElementById("letter");

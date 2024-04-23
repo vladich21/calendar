@@ -57,11 +57,15 @@ module.exports = (env, argv) => {
     devServer: {
       port: 3000,
       hot: true,
+<<<<<<< HEAD
       open: {
         app: {
           name: 'google chrome'
         }
       },
+=======
+      open: true,
+>>>>>>> 632be2f40d7503b5f83e08a43dbc8cabbe9335e5
       historyApiFallback: true,
       client: {
         overlay: {
