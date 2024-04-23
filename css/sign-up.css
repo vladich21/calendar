@@ -1,9 +1,9 @@
+@charset "UTF-8";
 /*
     Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
     - The "symbol *" part is to solve Firefox SVG sprite bug
  */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 *:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
   all: unset;
   display: revert;
@@ -54,14 +54,13 @@ textarea {
 meter {
   -webkit-appearance: revert;
   -moz-appearance: revert;
-  appearance: revert;
+       appearance: revert;
 }
 
 /* reset default text opacity of input placeholder */
 ::-moz-placeholder {
   color: unset;
 }
-
 ::placeholder {
   color: unset;
 }
@@ -122,18 +121,15 @@ body {
   display: flex;
   flex-direction: column;
 }
-
 @media (max-width: 1200px) {
   .form {
     padding: 0 20px;
   }
 }
-
 .form__logo {
   margin-top: 31px;
   margin-left: 42px;
 }
-
 .form__content {
   padding-top: 102px;
   padding-bottom: 102px;
@@ -141,7 +137,6 @@ body {
   max-width: 431px;
   align-self: center;
 }
-
 .form__title {
   font-weight: 500;
   font-size: 30px;
@@ -150,7 +145,6 @@ body {
   display: block;
   margin-bottom: 22px;
 }
-
 .form__subtitle {
   font-weight: 400;
   font-size: 16px;
@@ -158,11 +152,9 @@ body {
   color: #000000;
   margin-bottom: 6px;
 }
-
 .form__subtitle:last-of-type {
   margin-bottom: 52px;
 }
-
 .form__link {
   font-weight: 600;
   font-size: 16px;
@@ -179,19 +171,11 @@ body {
 
 .input-box {
   margin-bottom: 49px;
+  position: relative;
 }
-
-.password__eye {
-  width: 1.5rem;
-  cursor: pointer;
-  margin-left: 305px;
-  bottom: 50px;
-}
-
 .input-box:last-of-type {
   margin-bottom: 0;
 }
-
 .input-box__info {
   display: block;
   margin-bottom: 11px;
@@ -200,11 +184,19 @@ body {
   line-height: 20px;
   color: #999999;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
-
-.input-box>input {
+.input-box-eye {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 30px;
+  right: 5px;
+  cursor: pointer;
+}
+.input-box > input {
   box-sizing: border-box;
   position: relative;
   width: 100%;
@@ -213,71 +205,20 @@ body {
   padding-left: 27px;
   color: #000842;
 }
-
-.input-box>input:focus {
+.input-box > input:focus {
   border-bottom: 2px solid #000842;
 }
-
 .input-box__icon {
   position: absolute;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
-
-#message {
-  display: none;
-  background: #f1f1f1;
-  color: #000842;
-  position: relative;
-  padding: 20px;
-  margin-top: 10px;
-}
-
-.message_h3 {
-  font-weight: bold;
-  font-size: 10px;
-}
-
-#message p {
-  padding: 6px 15px;
-  font-size: 10px;
-}
-
-.valid {
-  color: green;
-}
-
-.valid:before {
-  position: relative;
-  left: -15px;
-  content: "\2713";
-
-}
-
-.invalid {
-  color: #000842;
-}
-
-.invalid:before {
-  position: relative;
-  left: -15px;
-  content: "\2717";
-}
-
-.password__eye img {
-  width: 10px;
-  height: 10px;
-}
-
-
-
 
 .btn-box {
   margin-top: 109px;
 }
-
-.btn-box>button {
+.btn-box > button {
   background: #0c21c1;
   box-shadow: 0px 4px 26px rgba(0, 0, 0, 0.25);
   border-radius: 32px;
@@ -298,7 +239,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
 .form-box__social-info {
   font-weight: 500;
   font-size: 16px;
@@ -306,17 +246,32 @@ body {
   color: #b5b5b5;
   margin-bottom: 31px;
 }
-
 .form-box__social-items {
   display: flex;
 }
-
-.form-box__social-items>a {
+.form-box__social-items > a {
   margin-right: 20px;
 }
-
-.form-box__social-items>a:last-of-type {
+.form-box__social-items > a:last-of-type {
   margin-right: 0;
 }
 
-/*# sourceMappingURL=style.css.map */
+.valid {
+  color: grey;
+}
+
+.invalid {
+  color: red;
+}
+
+.valid:before {
+  position: relative;
+  left: -15px;
+  content: "✓";
+}
+
+.invalid:before {
+  position: relative;
+  left: -15px;
+  content: "✗";
+}/*# sourceMappingURL=sign-up.css.map */

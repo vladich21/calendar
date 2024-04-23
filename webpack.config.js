@@ -5,7 +5,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const _pathToJs = './src/'
 const pages = [
   ['sign-up', `${_pathToJs}sign-up.js`], 
-  ['sign-in', `${_pathToJs}sign-in.js`]
+  ['sign-in', `${_pathToJs}sign-in.js`],
+  ['sign-up', `${_pathToJs}sign-up.js`],
 ]
 
 module.exports = (env, argv) => {
@@ -57,7 +58,11 @@ module.exports = (env, argv) => {
     devServer: {
       port: 3000,
       hot: true,
-      open: true,
+      open: {
+        app: {
+          name: 'google chrome'
+        }
+      },
       historyApiFallback: true,
       client: {
         overlay: {
