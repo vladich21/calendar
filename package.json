@@ -6,7 +6,11 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
+<<<<<<< HEAD
+    "start": "webpack serve --mode development "
+=======
     "start": "webpack serve"
+>>>>>>> 632be2f40d7503b5f83e08a43dbc8cabbe9335e5
   },
   "keywords": [],
   "author": "Vlad",
@@ -15,6 +19,10 @@
     "css-loader": "^7.1.1",
     "html-loader": "^5.0.0",
     "html-webpack-plugin": "^5.6.0",
+<<<<<<< HEAD
+    "live-server-webpack-plugin": "^3.0.0",
+=======
+>>>>>>> 632be2f40d7503b5f83e08a43dbc8cabbe9335e5
     "mini-css-extract-plugin": "^2.9.0",
     "sass": "^1.75.0",
     "sass-loader": "^14.2.1",
