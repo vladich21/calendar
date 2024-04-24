@@ -15,6 +15,8 @@ export const validator = (value) => {
           case 'maxLength':
             result[key] = value.length <= rules[key]
             break
+          case 'minLength':
+            result[key] = value.length >= rules[key]
         }
       }
       return result
