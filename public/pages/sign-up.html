@@ -4,7 +4,6 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!-- <link rel="stylesheet" href="/css/sign-up.css"> -->
     <title>Sign up</title>
   </head>
   <body>
@@ -43,7 +42,7 @@
               placeholder="Enter your password"
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="" required/>
               <span class="input-box-eye">
-                <img src="../assets/image/svg/eye.svg" class="password__eye" id="eyeicon" alt="img" >
+                <img src="../assets/image/svg/eye_close.svg" class="password__eye" id="eyeicon" alt="img" >
               </span>
                 <div id="message" class="message_psw">
                     <h3 class="message_h3">The password must contain the following:</h3>
@@ -52,17 +51,6 @@
                     <p id="number" class="invalid"><b>number</b></p>
                     <p id="letter" class="invalid"><b>letters of the Latin alphabet only</b></p>
                   </div>
-            </div>
-            <div class="form-box__input-box input-box">
-              <label class="input-box__info" for="confrim-password">Confrim password</label>
-              <label class="input-box__icon" for="confrim-password">
-                <img src="../assets/image/svg/password.svg" alt="confrim password"/>
-            </label>
-              <input
-                type="password"
-                name="confrim-password"
-                id="confrim-password"
-                placeholder="Confrim your password"/>
             </div>
             <div class="form-box__btn-box btn-box">
               <button type="submit" value="Отправить">Register</button>

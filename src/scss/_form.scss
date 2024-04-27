@@ -94,6 +94,14 @@
       user-select: none;
     }
   }
+  .message_psw {
+    display: none;
+  }
+  .form-box__input-box > p{
+    font-size: 13px;
+    color: red;
+    display: none;
+  }
   .btn-box {
     margin-top: 109px;
     & > button {
