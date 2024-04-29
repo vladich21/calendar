@@ -6,7 +6,8 @@ const _pathToJs = './src/'
 const pages = [
   ['sign-up', `${_pathToJs}sign-up.js`], 
   ['sign-in', `${_pathToJs}sign-in.js`],
-  ['succses', `${_pathToJs}succses.js`],
+  ['sign-up', `${_pathToJs}sign-up.js`],
+  ['success', `${_pathToJs}success .js`]  
 ]
 
 module.exports = (env, argv) => {

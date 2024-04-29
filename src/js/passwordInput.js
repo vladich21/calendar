@@ -1,4 +1,7 @@
+import { Api } from '../api/api';
 import { validator } from './utils';
+
+const api = new Api();
 
 export const passwordInput = () => {
   const input = document.querySelector('#password');
@@ -42,7 +45,7 @@ export const passwordInput = () => {
       include: [includeLowerCase, includeUpperCase, includeNumber],
       minLength
     } = validator(value).test({ include: [lowerCaseLetters, upperCaseLetters, numbers], minLength: 8 });
-
+  
     if (minLength) {
       length.classList.remove('invalid');
       length.classList.add('valid');
@@ -50,7 +53,7 @@ export const passwordInput = () => {
       length.classList.remove('valid');
       length.classList.add('invalid');
     }
-
+  
     if (includeLowerCase) {
       letter.classList.remove('invalid');
       letter.classList.add('valid');
@@ -58,7 +61,7 @@ export const passwordInput = () => {
       letter.classList.remove('valid');
       letter.classList.add('invalid');
     }
-
+  
     if (includeUpperCase) {
       capital.classList.remove('invalid');
       capital.classList.add('valid');
@@ -66,7 +69,7 @@ export const passwordInput = () => {
       capital.classList.remove('valid');
       capital.classList.add('invalid');
     }
-
+  
     if (includeNumber) {
       number.classList.remove('invalid');
       number.classList.add('valid');
@@ -76,29 +79,11 @@ export const passwordInput = () => {
     }
   };
   input.addEventListener('input', handleInput);
-  
-  registerButton.addEventListener('click', async () => {
-    const email = document.querySelector('#email').value;
-    const password = input.value;
-
-    try {
-      const response = await fetch('http://localhost:3000/registration', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        console.log('Регистрация прошла успешно');
-        window.location.href = '/succses.html'; 
-      } else {
-        console.error('Ошибка при регистрации');
-        // Дополнительные действия при ошибке регистрации
-      }
-    } catch (error) {
-      console.error('Ошибка при отправке запроса:', error);
-    }
+   
+  registerButton.addEventListener('click', async (e) => {
+    e.preventDefault ();
+    const email = document.querySelector('#email').value,
+          password = document.querySelector('#password').value;
+          api.registration (email, password)
   });
 };
