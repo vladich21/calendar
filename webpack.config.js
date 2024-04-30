@@ -7,7 +7,7 @@ const pages = [
   ['sign-up', `${_pathToJs}sign-up.js`], 
   ['sign-in', `${_pathToJs}sign-in.js`],
   ['sign-up', `${_pathToJs}sign-up.js`],
-  ['success', `${_pathToJs}success .js`]  
+  ['success', `${_pathToJs}success.js`]  
 ]
 
 module.exports = (env, argv) => {
